@@ -11,7 +11,7 @@ public class PersonInformationUtils {
             "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     private static final String NAME_PATTERN =
-              "^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$"
+            "([a-zA-Z0-9]+)|(['()+,\\-.=]+)"
     ;
 
     private PersonInformationUtils() {}
@@ -26,7 +26,8 @@ public class PersonInformationUtils {
         boolean isValid = isNotEmpty(request.getUserName()) && isNotEmpty(request.getEmail()) && isNotEmpty(request.getGender());
 
         isValid = isValid && isValidData(request.getEmail(), EMAIL_PATTERN);
-        //isValid = isValid && isValidData(request.getUserName(), NAME_PATTERN);
+
+        isValid = isValid && isValidData(request.getUserName(), NAME_PATTERN);
 
         isValid = isValid && (request.getAge() > 0);
 

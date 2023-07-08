@@ -29,6 +29,12 @@ public class PersonInformationController {
         return personInformationService.getAllPersons();
     }
 
+    @GetMapping("/all/{gender}")
+    public List<Person> retrieveUsingGender(@PathVariable String gender) {
+        return personInformationService.getAllPersons(gender);
+    }
+
+
 
     @PostMapping(value = "/save",  produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)

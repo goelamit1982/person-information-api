@@ -23,6 +23,11 @@ public class PersonInformationService {
        return personList;
     }
 
+    public List<Person> getAllPersons(String gender){
+        List<Person> personList = personInformationRepository.findAllByGender(gender);
+        return personList;
+    }
+
     public PersonInformationDto saveEmployee(PersonInformationDto personInformationDto) {
         Person person = new Person();
         person.setName(personInformationDto.getUserName());
